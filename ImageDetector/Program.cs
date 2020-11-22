@@ -49,7 +49,7 @@ namespace ImageDetector
             var images = ImageNetData.ReadFromCsv("images/tags.tsv");
             foreach (var image in images)
             {
-                Console.WriteLine($" [{image.ImagePath}]: ");
+                Console.Write($" [{image.ImagePath}]: ");
                 var prediction = engine.Predict(image).PredictLabels;
 
                 var i = 0;
@@ -59,7 +59,7 @@ namespace ImageDetector
                             .First();
                 var predictedLabel = labels[best.Index];
 
-                Console.Write($"{predictedLabel} {(predictedLabel != image.Label ? "**WRONG**" : "")}");
+                Console.WriteLine($"{predictedLabel} {(predictedLabel != image.Label ? "**WRONG**" : "")}");
             }
         }
     }
